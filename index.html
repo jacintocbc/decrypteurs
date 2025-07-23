@@ -1,0 +1,338 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Fixed controls for language toggle and start over button -->
+    <div class="fixed-controls">
+        <div class="language-switcher">
+            <button id="lang-fr" onclick="setLanguage('fr')">FR</button>
+            <button id="lang-en" class="active" onclick="setLanguage('en')">EN</button>
+        </div>
+        <button id="startOverButton" class="btn-lg yellow" type="button" onclick="restartQuiz()" data-key="restartQuiz">Start Over</button>
+    </div>
+
+    <div class="quiz-container">
+        <!-- Intro -->
+        <div class="wrapper" id="introPage">
+            <div class="intro">
+                <h1 data-key="introTitle">Can you spot a scam?</h1>
+                <p data-key="introPara1">
+                    If you've ever been scammed, you're not alone: according to the Canadian Anti-Fraud Centre, Canadians lost more than $554,000,000 to fraud in 2023. And this is only a partial picture of the situation, knowing that a large majority of cases are never reported to the authorities.
+                </p>
+                <p data-key="introPara2">
+                    Fraudsters are becoming more resourceful in stealing your money and personal information, to the point where their traps are sometimes difficult to distinguish from legitimate communications from known entities. That's why we've created this quiz to better equip you to deal with these requests.
+                </p>
+                <p data-key="introPara3">
+                    Will you be able to spot scams?
+                </p>
+                <button class="btn-lg green" type="button" onclick="startQuiz()" data-key="startQuizButton">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Page 1 -->
+        <div class="page-container" id="page1">
+            <div class="question">
+                <h2 data-key="questionXofY" data-question-num="1" data-total-questions="7">Question 1 of 7</h2>
+                <div class="q-img">
+                    <img src="./img/fr-1a.webp" alt="Question 1a Image" data-key="imageQuestion1aAlt">
+                    <p class="text" data-key="q1Text">
+                        English Translation: <br />
+                        Payment of import duties, taxes and related fees required for DHL Express 1114459275 from ATLAS COMPANY. Pay securely: https://del.dhl.com/CA/UKx9-exrF7
+                    </p>
+                </div>
+                <div class="btn-group">
+                    <button class="btn" type="button" data-answer="scam" data-key="scam">A Scam</button>
+                    <button class="btn" type="button" data-answer="not-scam" data-key="notScam">Not a Scam</button>
+                    <button class="btn" type="button" data-answer="maybe-scam" data-key="maybeScam">Maybe a Scam</button>
+                </div>
+            </div>
+            <div class="answer"> <!-- Removed hidden class here, managed by JS -->
+                <h2 data-key="q1AnswerTitle">This is not a scam</h2>
+                <p data-key="q1AnswerPara1">
+                    This is a real text message sent to a Canadian customer of the parcel delivery company DHL.
+                </p>
+                <p data-key="q1AnswerPara2">
+                    To find out if such a text message is misleading or not, check the URL. In this case, it is DHL.com, which is the official DHL domain. When a URL contains several words separated by dots, the last word is that of the real URL. Scammers will often try to trick you by placing words that seem official or credible at the beginning of the URL.
+                </p>
+                <div class="a-img">
+                    <img src="./img/fr-1b.png" alt="Answer 1b Image" data-key="imageAnswer1bAlt">
+                    <p data-key="q1AnswerPara3">
+                        English Translation:<br>
+                        Payment of import duties, taxes and related fees required for DHL Express 1114459275 from ATLAS COMPANY. Pay securely: https://del.dhl.com/CA/UKx9-exrF7
+                    </p>
+                </div>
+                <p data-key="q1AnswerPara4">
+                    In addition, the sender's phone number can often be a good indicator of the authenticity of the text message. In this case, the sender is '22345'. A simple search for this number leads directly to the DHL website, which explains that company communications come from this number.
+                </p>
+                <div class="a-img">
+                    <img src="./img/fr-1c.webp" alt="Answer 1c Image" data-key="imageAnswer1cAlt">
+                </div>
+                <p data-key="q1AnswerPara5">Several scammers try to impersonate parcel delivery services. Be wary of text messages like this.</p>
+                <div class="a-img">
+                    <img src="./img/fr-1d.webp" alt="Answer 1d Image" data-key="imageAnswer1dAlt">
+                </div>
+                <p data-key="q1AnswerPara6">
+                    The URL in this text message is not that of a known parcel delivery service or even customs. A simple search to verify the sender's phone number yields no conclusive results.
+                </p>
+                <div class="next"> <!-- Removed hidden class here, managed by JS -->
+                    <button class="btn green" type="button" onclick="nextQuestion('page2')" data-key="nextQuestion">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="page-container hidden" id="page2">
+            <div class="question">
+                <h2 data-key="questionXofY" data-question-num="2" data-total-questions="7">Question 2 of 7</h2>
+                <div class="q-img">
+                    <div class="alt-btn-group">
+                        <button class="btn alt-btn active" type="button" data-img-id="fr-2a" data-key="email">Email</button>
+                        <button class="btn alt-btn" type="button" data-img-id="fr-2b" data-key="attachment">Attachment</button>
+                    </div>
+                    <img src="./img/fr-2a.webp" alt="Question 2a Image" id="img-fr-2a" data-key="imageQuestion2aAlt">
+                    <img src="./img/fr-2b.webp" alt="Question 2b Image" id="img-fr-2b" class="hidden" data-key="imageQuestion2bAlt">
+                </div>
+                <div class="btn-group">
+                    <button class="btn" type="button" data-answer="scam" data-key="scam">A Scam</button>
+                    <button class="btn" type="button" data-answer="not-scam" data-key="notScam">Not a Scam</button>
+                    <button class="btn" type="button" data-answer="maybe-scam" data-key="maybeScam">Maybe a Scam</button>
+                </div>
+            </div>
+            <div class="answer"> <!-- Removed hidden class here, managed by JS -->
+                <h2 data-key="q2AnswerTitle">This is a scam</h2>
+                <p data-key="q2AnswerPara1">
+                    This is one of the most common scams in Canada since the beginning of 2023.
+                </p>
+                <p data-key="q2AnswerPara2">
+                    The scheme is always the same: scammers posing as your landlord ask you to quickly make an Interac e-transfer to pay your rent which would be late, or unpaid.
+                </p>
+                <p data-key="q2AnswerPara3">
+                    Beware of messages that urgently demand money or ask for payments by Interac e-transfer: once the transfer is made, obtaining a refund is very difficult, if not impossible. The transaction is almost instantaneous and considered final by banking institutions once it has been accepted by the recipient.
+                </p>
+                <div class="next"> <!-- Removed hidden class here, managed by JS -->
+                    <button class="btn green" type="button" onclick="nextQuestion('page3')" data-key="nextQuestion">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="page-container hidden" id="page3">
+            <div class="question">
+                <h2 data-key="questionXofY" data-question-num="3" data-total-questions="7">Question 3 of 7</h2>
+                <div class="q-img">
+                    <img src="./img/fr-3a.webp" alt="Question 3a Image" data-key="imageQuestion3aAlt">
+                </div>
+                <div class="btn-group">
+                    <button class="btn" type="button" data-answer="scam" data-key="scam">A Scam</button>
+                    <button class="btn" type="button" data-answer="not-scam" data-key="notScam">Not a Scam</button>
+                    <button class="btn" type="button" data-answer="maybe-scam" data-key="maybeScam">Maybe a Scam</button>
+                </div>
+            </div>
+            <div class="answer"> <!-- Removed hidden class here, managed by JS -->
+                <h2 data-key="q3AnswerTitle">This is a scam</h2>
+                <p data-key="q3AnswerPara1">
+                    Fraudsters have been trying for several years to impersonate government agencies or Crown corporations to steal your personal information. In this case, the bait is an amount of money supposedly owed to you by the Société de l'assurance automobile du Québec (SAAQ), but the creativity of these scammers knows no bounds. Canada Revenue Agency, Hydro-Québec, Régie de l'assurance maladie du Québec (RAMQ): all means are good to extract money from you.
+                </p>
+                <p data-key="q3AnswerPara2">
+                    Until recently, the general rule was that the government and government agencies never communicate by text message. It was enough to ignore any supposed government communication by text message. This is still true... with one exception.
+                </p>
+                <p data-key="q3AnswerPara3">
+                    Revenu Québec has recently started offering notifications regarding citizens' files by text message. However, these text messages never contain links or personal information: they simply alert you to changes in your file. In addition, only people who consent to receive these text messages in their tax return will receive them.
+                </p>
+                <p data-key="q3AnswerPara4">
+                    Keep in mind that fraudsters often bounce off the latest news to make their scams seem more credible, and always be wary of text messages that direct you to sites asking for personal information such as your credit card number or password.
+                </p>
+                <div class="next"> <!-- Removed hidden class here, managed by JS -->
+                    <button class="btn green" type="button" onclick="nextQuestion('page4')" data-key="nextQuestion">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 4 -->
+        <div class="page-container hidden" id="page4">
+            <div class="question">
+                <h2 data-key="questionXofY" data-question-num="4" data-total-questions="7">Question 4 of 7</h2>
+                <div class="q-img">
+                    <img src="./img/fr-5a.webp" alt="Question 4a Image" data-key="imageQuestion4aAlt">
+                </div>
+                <div class="btn-group">
+                    <button class="btn" type="button" data-answer="scam" data-key="scam">A Scam</button>
+                    <button class="btn" type="button" data-answer="not-scam" data-key="notScam">Not a Scam</button>
+                    <button class="btn" type="button" data-answer="maybe-scam" data-key="maybeScam">Maybe a Scam</button>
+                </div>
+            </div>
+            <div class="answer"> <!-- Removed hidden class here, managed by JS -->
+                <h2 data-key="q4AnswerTitle">This is a scam</h2>
+                <p data-key="q4AnswerPara1">
+                    Although Microsoft's visual signature is well reproduced, several red flags can be detected.
+                </p>
+                <p data-key="q4AnswerPara2">
+                    First, email providers or employers generally do not send messages to encourage you to keep the same password. Several phishing attempts use this strategy, which serves to collect your personal information and password.
+                </p>
+                <p data-key="q4AnswerPara3">
+                    Otherwise, always remember to validate the sender's email address by doing a quick search. In this case, it is 'account-security-noreply@m365-microsoft.com', which seems perfectly legitimate at first glance, but the domain 'm365-microsoft.com' does not belong to Microsoft: the official website is actually microsoft.com.
+                </p>
+                <p data-key="q4AnswerPara4">
+                    It is theoretically possible for a malicious actor to falsify an email domain, but major email providers (Gmail, Outlook) employ security protocols that should automatically block this type of message.
+                </p>
+                <p data-key="q4AnswerPara5">
+                    However, these security measures are not infallible as malicious actors are constantly trying to develop techniques to circumvent them. Vigilance therefore remains essential: do not click on links or attachments from unverified sources and beware of emails that direct you to sites asking for personal information such as your credit card number or password.
+                </p>
+                <div class="next"> <!-- Removed hidden class here, managed by JS -->
+                    <button class="btn green" type="button" onclick="nextQuestion('page5')" data-key="nextQuestion">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="page-container hidden" id="page5">
+            <div class="question">
+                <h2 data-key="questionXofY" data-question-num="5" data-total-questions="7">Question 5 of 7</h2>
+                <div class="q-img">
+                    <img src="./img/fr-6a.webp" alt="Question 5a Image" data-key="imageQuestion5aAlt">
+                </div>
+                <div class="btn-group">
+                    <button class="btn" type="button" data-answer="scam" data-key="scam">A Scam</button>
+                    <button class="btn" type="button" data-answer="not-scam" data-key="notScam">Not a Scam</button>
+                    <button class="btn" type="button" data-answer="maybe-scam" data-key="maybeScam">Maybe a Scam</button>
+                </div>
+            </div>
+            <div class="answer"> <!-- Removed hidden class here, managed by JS -->
+                <h2 data-key="q5AnswerTitle">This may be a scam (unless your first name is Éric)</h2>
+                <p data-key="q5AnswerPara1">
+                    And even if your name is Éric, beware of messages from an unknown sender: several scams have as their starting point a random text message, supposedly sent to the wrong person by mistake, like this one. The goal of scammers is to gain your trust and then extract money from you.
+                </p>
+                <p data-key="q5AnswerPara2">
+                    The authors of this type of scam, nicknamed 'pig butchering', use all means to gain the victim's trust: fake social media profiles, sending photos, sending voice messages... They will try to befriend you or become your lover to better manipulate and rob you.
+                </p>
+                <p data-key="q5AnswerPara3">
+                    The ultimate goal is often to directly ask for sums of money, or to enlist the victim in an investment scam.
+                </p>
+                <div class="next"> <!-- Removed hidden class here, managed by JS -->
+                    <button class="btn green" type="button" onclick="nextQuestion('page6')" data-key="nextQuestion">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 6 -->
+        <div class="page-container hidden" id="page6">
+            <div class="question">
+                <h2 data-key="questionXofY" data-question-num="6" data-total-questions="7">Question 6 of 7</h2>
+                <div class="q-img">
+                    <img src="./img/fr-7a.webp" alt="Question 6a Image" data-key="imageQuestion6aAlt">
+                </div>
+                <div class="btn-group">
+                    <button class="btn" type="button" data-answer="scam" data-key="scam">A Scam</button>
+                    <button class="btn" type="button" data-answer="not-scam" data-key="notScam">Not a Scam</button>
+                    <button class="btn" type="button" data-answer="maybe-scam" data-key="maybeScam">Maybe a Scam</button>
+                </div>
+            </div>
+            <div class="answer"> <!-- Removed hidden class here, managed by JS -->
+                <h2 data-key="q6AnswerTitle">This is a scam</h2>
+                <p data-key="q6AnswerPara1">
+                    This is a very common scam on sales platforms like Kijiji or Facebook Marketplace. The seller is put at ease because the proposal involves money being handed over in person, but this is only the first step of the scam. If you accept the offer, the scammer will send you a message like this:
+                </p>
+                <div class="a-img">
+                    <img src="./img/fr-7b.png" alt="Answer 6b Image" data-key="imageAnswer6bAlt">
+                </div>
+                <p data-key="q6AnswerPara2">
+                    The amount and means of collection may vary (prepaid credit card, Interac e-transfer, etc.), but the scheme is always the same: convince you to pay 'insurance fees' and steal your money without a delivery person picking up the package from your home.
+                </p>
+                <p data-key="q6AnswerPara3">
+                    The scammer will sometimes ask for a direct transfer, but usually, they will use a fake email with the delivery service's branding.
+                </p>
+                <p data-key="q6AnswerPara4">
+                    Always be wary of buyers offering any purchase method that is not an exchange of the item and cash in hand. Scams based on Interac e-transfers are rare, but it is possible that someone uses a hacked account to send you funds and the transaction is then cancelled by the bank.
+                </p>
+                <div class="next"> <!-- Removed hidden class here, managed by JS -->
+                    <button class="btn green" type="button" onclick="nextQuestion('page7')" data-key="nextQuestion">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 7 -->
+        <div class="page-container hidden" id="page7">
+            <div class="question">
+                <h2 data-key="questionXofY" data-question-num="7" data-total-questions="7">Question 7 of 7</h2>
+                <div class="q-img">
+                    <img src="./img/fr-9a.webp" alt="Question 7a Image" data-key="imageQuestion7aAlt">
+                </div>
+                <div class="btn-group">
+                    <button class="btn" type="button" data-answer="scam" data-key="scam">A Scam</button>
+                    <button class="btn" type="button" data-answer="not-scam" data-key="notScam">Not a Scam</button>
+                    <button class="btn" type="button" data-answer="maybe-scam" data-key="maybeScam">Maybe a Scam</button>
+                </div>
+            </div>
+            <div class="answer"> <!-- Removed hidden class here, managed by JS -->
+                <h2 data-key="q7AnswerTitle">This is a scam</h2>
+                <p data-key="q7AnswerPara1">
+                    This technical support scam has been circulating for several years and can take several forms, including the famous blue screen error on Windows computers. It usually appears as a pop-up window.
+                </p>
+                <div class="a-img">
+                    <img src="./img/fr-9b.webp" alt="Answer 7b Image" data-key="imageAnswer7bAlt">
+                </div>
+                <p data-key="q7AnswerPara2">
+                    In any case, fraudsters want you to call the number on the screen, with the aim of performing one or more malicious acts: remote control of your computer, costly subscriptions, installation of spyware...
+                </p>
+                <p data-key="q7AnswerPara3">
+                    Don't worry and especially don't call the number that appears on the screen. It is possible that the malicious website does not want to close or disappear. In such a case, right-click on your Start menu, click on Task Manager and end the task that does not correspond to your open software.
+                </p>
+                <p data-key="q7AnswerPara4">
+                    This scam can also take the form of an unsolicited call from someone claiming to be a Microsoft representative.
+                </p>
+                <p data-key="q7AnswerPara5">
+                    Keep in mind that Microsoft 'does not send unsolicited emails or make unsolicited phone calls asking for personal or financial information, or to provide technical support to fix your computer,' according to its website.
+                </p>
+                <div class="next"> <!-- Removed hidden class here, managed by JS -->
+                    <button class="btn green" type="button" onclick="nextQuestion('outroPage')" data-key="seeResultsButton">See Results</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outro -->
+        <div class="wrapper hidden" id="outroPage">
+            <div class="intro">
+                <div class="score"> <!-- Class will be added dynamically -->
+                    <div class="score-wrapper">
+                        <div class="icon">
+                            <svg width="120" height="120" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <mask id="cutout">
+                                    <rect width="100%" height="100%" fill="white"/>
+                                    <path d="M16 24l6 6 12-12" fill="none" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                </mask>
+                                <circle cx="24" cy="24" r="22" mask="url(#cutout)" />
+                            </svg>
+                        </div>
+                        <div class="score-text">
+                            <h2 id="finalScorePercentage">0%</h2>
+                            <h3 id="finalScoreCount" data-key="outroScoreCount" data-correct-answers="0" data-total-questions="7">0 correct answers out of 7 questions</h3>
+                        </div>
+                    </div>
+                </div>
+                <p data-key="outro1">
+                    To report a scam to the Canadian Anti-Fraud Centre, call this toll-free number: 1 888 495-8501.
+                </p>
+                <p data-key="outro2">
+                    The Université de Montréal’s Clinique de cyber-criminologie offers free personalized support to scam victims on its website, Fraude-Alerte.ca. The site also lists all types of fraud.
+                </p>
+                <p data-key="outro3">
+                    Contact Les Décrypteurs at decrypteurs@radio-canada.ca
+                </p>
+                <!-- <p data-key="outro4">
+                    Share the quiz – Copy the link / Social media
+                </p> -->
+                <p data-key="outro5">
+                    Nicholas De Rosa journalist, Sara Barrière-Brunet rundown producer, Andréa Alvarenga and Louis-Philippe Bouvier designers, André Guimaraes and Mathieu St-Laurent developers and Pierre Duchesneau copy editor.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

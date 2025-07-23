@@ -1,0 +1,440 @@
+/* Import Radio Canada font */
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap');
+
+        body {
+            background: #161616;
+            color: white;
+            font-family: 'Radio Canada', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            position: relative; /* Needed for absolutely positioned children */
+
+            /* Moved background styles from .wrapper to body */
+            background-image: url(./img/decrypteurs-arnaques-entete.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 80% 0;
+            background-attachment: fixed; /* Ensures background stays fixed when content scrolls */
+        }
+
+/* General styles for the main container */
+/* Note: quiz-container is used to center the content within the body */
+.quiz-container {
+    max-width: 100vw; /* Allow full width */
+    width: 100%;
+    background-color: transparent; /* Background handled by wrapper/page-container */
+    border-radius: 0; /* No explicit border-radius on container itself */
+    box-shadow: none; /* No shadow on container itself */
+    overflow: hidden;
+    display: flex; /* Use flex to manage child pages */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styles for introduction and conclusion sections */
+.wrapper {
+    background: url(./img/decrypteurs-arnaques-entete.webp); /* Your specified background image */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 80% 0;
+    width: 100vw;
+    height: 100vh;
+    position: absolute; /* Position absolutely to cover the screen */
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Ensure content inside wrapper is centered vertically */
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    border-radius: 40px;
+    border: 2px solid white;
+    padding: 20px;
+    width: 40vw;
+    position: relative;
+    background: rgba(22, 22, 22, 0.95);
+    font-size: 1.4rem;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.intro h1 {
+    font-size: 2.5rem; /* Large title size */
+    font-weight: 700;
+    color: white; /* Changed to white for dark background */
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 1.4rem; /* As per user's intro font-size */
+    line-height: 1.7;
+    color: white; /* Changed to white for dark background */
+    margin-bottom: 15px;
+}
+
+/* Styles for question/answer page containers */
+.page-container {
+    display: flex;
+    height: 1000px; /* Fixed height as per user's CSS */
+    width: 100%; /* Take full width */
+    justify-content: center; /* Center content horizontally */
+    align-items: flex-start; /* Align items to the top */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 40px;
+    border: 2px solid white;
+    padding: 20px;
+    width: 32vw; /* Fixed width as per user's CSS */
+    position: relative;
+    box-sizing: border-box;
+    background: rgba(22, 22, 22, 0.95); /* Semi-transparent background */
+    height: 96%;
+}
+
+.question h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.q-img {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.q-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Darker shadow for dark theme */
+    margin-bottom: 15px;
+}
+
+.q-img .text {
+    max-width: 100%;
+    font-size: 1rem;
+    color: white;
+    line-height: 1.5;
+    text-align: left;
+    background-color: rgba(30, 30, 30, 0.9); /* Darker background for text box */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #4a4a4a; /* Darker border */
+    margin: 0;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between; /* Reverted to space-between as per original CSS */
+    width: 100%;
+    /* Removed flex-wrap and gap to match original user CSS behavior */
+}
+
+.btn, .btn-lg {
+    font-family: 'Radio Canada', sans-serif;
+    font-size: 18px; /* Default for .btn */
+    height: 50px;
+    padding: 10px 20px; /* Default for .btn */
+    border-radius: 15px;
+    border: none;
+    transition: all 0.3s ease;
+    color: white; /* Default button text color */
+    box-sizing: border-box; /* Added for consistent sizing */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Darker shadow for buttons */
+}
+
+.btn {
+    min-width: 180px;
+    background-color: #555; /* Default button color */
+}
+
+.btn-wide {
+    min-width: 195px; /* Wider buttons for English language */
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #777; /* Darker hover effect */
+}
+
+.btn-lg {
+    font-size: 25px; /* Specific for .btn-lg */
+    padding: 10px 25px; /* Specific for .btn-lg */
+    margin-bottom: 30px; /* Specific for .btn-lg */
+}
+
+.btn-lg:hover {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto; /* Ensure images scale correctly */
+}
+
+.answer {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    padding: 20px;
+    background: rgba(22, 22, 22, 0.95); /* Semi-transparent background */
+    box-sizing: border-box;
+    width: 30vw; /* Fixed width as per user's CSS */
+    height: 96%; /* Maintain height for layout, content hidden by overflow */
+    opacity: 0;
+    clip-path: inset(0 0 100% 0); /* Start clipped from bottom (hidden) */
+    overflow-y: scroll;
+    border: 2px solid white;
+    transition: opacity 0.5s ease-out, clip-path 0.5s ease-out, padding 0.5s ease-out, border 0.5s ease-out;
+}
+
+/* Class to make the answer visible and animated */
+.answer.is-visible {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0); /* Fully visible */
+}
+
+.answer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.answer::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.answer::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 40px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+.hidden {
+    display: none !important; /* Use !important to ensure it overrides other display properties */
+}
+
+/* Next button positioning - now inside .answer */
+.answer .next {
+    position: static; /* Remove absolute positioning from parent .next */
+    margin-top: 20px; /* Space from answer content */
+    text-align: center; /* Center the button within its parent */
+    width: 100%; /* Take full width of parent to center content */
+    /* Removed transform, left, top as they are no longer needed with static positioning */
+}
+
+/* Page 2 specific styles */
+#page1 .btn-group {
+    margin-top: 0px;
+}
+
+/* Page 2 specific styles */
+#page2 .q-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alt-btn-group {
+    margin-bottom: 10px;
+    display: flex; /* Ensure buttons are in a row */
+    gap: 10px; /* Spacing between alt buttons */
+}
+
+.alt-btn {
+    min-width: 140px;
+    background-color: #444; /* Darker default for alt buttons */
+}
+
+.alt-btn.active {
+    background-color: #007bff; /* Blue for active alt button */
+    border-color: #007bff;
+}
+
+#page2 .btn-group {
+    margin-top: 80px;
+}
+
+/* Page 3 specific styles */
+#page3 .btn-group {
+    margin-top: 100px;
+}
+
+/* Page 4 specific styles */
+#page4 .btn-group {
+    margin-top: 10px;
+}
+
+/* Page 5 specific styles */
+#page5 .btn-group {
+    margin-top: 280px;
+}
+
+/* Page 6 specific styles */
+#page6 img {
+    max-height: 700px;
+}
+
+#page6 .btn-group {
+    margin-top: 15px;
+}
+
+#page6 .answer img {
+    max-height: 150px;
+}
+
+/* Page 7 specific styles */
+#page7 .btn-group {
+    margin-top: 225px;
+}
+
+/* Score section styles */
+.score {
+    height: 200px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    /* Background color will be set dynamically by JS */
+    padding: 20px; /* Add padding */
+    box-sizing: border-box;
+}
+
+.score-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.score .icon svg {
+    color: white; /* Default icon color for dark theme */
+    /* Fill color for the circle will be set dynamically by JS or specific CSS */
+}
+
+/* Specific icon color for yellow score */
+.score.yellow .icon svg {
+    color: #161616; /* Ensure stroke is dark on yellow background */
+}
+
+.score.yellow .icon svg circle {
+    fill: #161616; /* Ensure circle fill is dark on yellow background */
+}
+
+.score-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    color: white; /* Default score text color */
+}
+
+/* Specific text color for yellow score */
+.score.yellow .score-text {
+    color: #161616; /* Ensure text is dark on yellow background */
+}
+
+.score-text h2 {
+    font-size: 3.5rem !important;
+    margin: 0;
+}
+
+.score-text h3 {
+    font-size: 2rem !important;
+    margin: 0;
+}
+
+/* Color classes */
+.red {
+    background: rgb(190, 0, 0);
+}
+
+.green {
+    background: rgb(0, 168, 109);
+}
+
+.yellow {
+    background: rgb(253, 196, 60);
+    color: #161616;
+    /* Note: color for text/icon on yellow is handled by .score.yellow .score-text and .score.yellow .icon svg */
+}
+
+/* Fixed controls container for language and restart buttons */
+.fixed-controls {
+    position: fixed; /* Fixed relative to viewport */
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between; /* Pushes language left, restart right */
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    pointer-events: none; /* Allow clicks to pass through to underlying elements */
+}
+
+/* Language switcher styles */
+.language-switcher {
+    display: flex;
+    gap: 10px;
+    background-color: transparent; /* Make background transparent */
+    border: none; /* Remove border */
+    padding: 0; /* Remove padding */
+    pointer-events: auto; /* Re-enable pointer events for buttons */
+}
+
+.language-switcher button {
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(119, 119, 119, 0.8);
+    background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent dark background */
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.4rem;
+    height: 50px;
+    width: 80px;
+    font-family: 'Radio Canada', sans-serif;
+}
+
+.language-switcher button.active {
+    background-color: #007bff; /* Blue for active button */
+    border-color: #007bff;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+.language-switcher button:hover:not(.active) {
+    background-color: #555; /* Darker hover effect */
+}
+
+/* Start Over button specific styles */
+#startOverButton {
+    margin-bottom: 0; /* Override btn-lg margin-bottom */
+    pointer-events: auto; /* Re-enable pointer events for button */
+    /* Inherits btn-lg styles for size and font */
+}
+
+/* End of CSS */
