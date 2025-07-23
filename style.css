@@ -240,13 +240,10 @@ img {
     display: none !important; /* Use !important to ensure it overrides other display properties */
 }
 
-/* Next button positioning - now inside .answer */
-.answer .next {
-    position: static; /* Remove absolute positioning from parent .next */
-    margin-top: 20px; /* Space from answer content */
-    text-align: center; /* Center the button within its parent */
-    width: 100%; /* Take full width of parent to center content */
-    /* Removed transform, left, top as they are no longer needed with static positioning */
+.next {
+    position: absolute;
+    bottom: 20px;
+    margin-left: 50px;
 }
 
 /* Page 2 specific styles */
@@ -328,21 +325,12 @@ img {
 .score-wrapper {
     display: flex;
     align-items: center;
-    margin-left: 50px;
+    margin-left: 25px;
 }
 
 .score .icon svg {
     color: white; /* Default icon color for dark theme */
     /* Fill color for the circle will be set dynamically by JS or specific CSS */
-}
-
-/* Specific icon color for yellow score */
-.score.yellow .icon svg {
-    color: #161616; /* Ensure stroke is dark on yellow background */
-}
-
-.score.yellow .icon svg circle {
-    fill: #161616; /* Ensure circle fill is dark on yellow background */
 }
 
 .score-text {

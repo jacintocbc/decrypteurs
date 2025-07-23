@@ -259,12 +259,16 @@ function showOutro() {
     scoreDiv.classList.remove('red', 'yellow', 'green');
 
     // Apply new color class based on percentage
+    const circle = scoreDiv.querySelector('circle');
     if (percentage < 57) {
         scoreDiv.classList.add('red');
+        circle.setAttribute('fill', 'white');
     } else if (percentage < 80) {
         scoreDiv.classList.add('yellow');
+        circle.setAttribute('fill', '#161616');
     } else {
         scoreDiv.classList.add('green');
+        circle.setAttribute('fill', 'white');
     }
 
     setLanguage(currentLanguage); // Re-apply language to update score text
@@ -367,7 +371,7 @@ document.querySelectorAll('.btn-group .btn').forEach(button => {
         const pageContainer = this.closest('.page-container');
         const pageNum = parseInt(pageContainer.id.replace('page', ''));
         const answerSection = pageContainer.querySelector('.answer');
-        const nextButton = answerSection.querySelector('.next'); // Select next button within answer section
+        const nextButton = pageContainer.querySelector('.next');
         const questionButtons = pageContainer.querySelectorAll('.btn-group .btn');
 
         // Prevent multiple clicks on answer buttons
