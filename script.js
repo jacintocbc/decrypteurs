@@ -317,10 +317,7 @@ function setLanguage(lang) {
     document.getElementById(`lang-${lang}`).classList.add('active');
 
     // Update document title
-    const docTitleElement = document.querySelector('title[data-key="documentTitle"]');
-    if (docTitleElement) {
-        docTitleElement.textContent = translations[lang].documentTitle;
-    }
+    document.title = translations[lang].documentTitle;
 
     // Update all elements with a data-key attribute
     document.querySelectorAll('[data-key]').forEach(element => {
