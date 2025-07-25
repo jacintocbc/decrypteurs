@@ -2,7 +2,7 @@
 let currentPage = 0; // Current page index (0 for intro, 1 for page1, etc.)
 const totalQuestions = 7;
 let correctAnswers = 0;
-let currentLanguage = 'fr'; // Default language is French
+let currentLanguage = 'en'; // Default language is French
 let inactivityTimer; // Variable to hold the timer
 
 // Define correct answers (page index: 'data-answer' of the correct button)
@@ -43,14 +43,12 @@ const translations = {
         seeResultsButton: "Voir les résultats", // New translation for "See Results"
         
         // Question 1
-        q1Text: "Traduction en français : Paiement des droits d'importation, des taxes et des frais connexes requis pour DHL Express 1114459275 de la part de ATLAS COMPAGNIE. Payez en toute sécurité : https://del.dhl.com/CA/UKx9-exrF7",
         q1AnswerTitle: "Ceci n’est pas une arnaque",
         q1AnswerPara1: "Il s’agit d’un vrai message texte envoyé à un client canadien de l’entreprise de transport de colis DHL.",
         q1AnswerPara2: "Pour savoir si un tel texto est trompeur ou pas, vérifiez l’URL. Dans ce cas-ci, il s’agit de DHL.com, soit le domaine officiel de DHL. Lorsqu’une URL contient plusieurs mots séparés par des points, le dernier mot est celui de la véritable URL. Les arnaqueurs tenteront souvent de vous berner en plaçant des mots qui semblent officiels ou crédibles au début de l’URL.",
-        q1AnswerPara3: "Traduction en français: Paiement des droits d'importation, des taxes et des frais connexes requis pour DHL Express 1114459275 de la part de ATLAS COMPAGNIE. Payez en toute sécurité : https://del.dhl.com/CA/UKx9-exrF7",
-        q1AnswerPara4: "De plus, le numéro de téléphone de l’expéditeur peut souvent être un bon indicateur de l’authenticité du texto. Dans ce cas-ci, l’expéditeur est « 22345 ». Une simple recherche pour ce numéro vous mène directement sur le site de DHL, qui explique que les communications de l’entreprise proviennent de ce numéro.",
-        q1AnswerPara5: "Plusieurs arnaqueurs tentent de se faire passer pour des services de transport de colis. Méfiez-vous de textos comme celui-ci.",
-        q1AnswerPara6: "L’URL dans ce texto n’est pas celle d’un service de transport de colis connu ni même des douanes. Une simple recherche pour vérifier le numéro de téléphone de l’expéditeur ne donne aucun résultat concluant.",
+        q1AnswerPara3: "De plus, le numéro de téléphone de l’expéditeur peut souvent être un bon indicateur de l’authenticité du texto. Dans ce cas-ci, l’expéditeur est « 22345 ». Une simple recherche pour ce numéro vous mène directement sur le site de DHL, qui explique que les communications de l’entreprise proviennent de ce numéro.",
+        q1AnswerPara4: "Plusieurs arnaqueurs tentent de se faire passer pour des services de transport de colis. Méfiez-vous de textos comme celui-ci.",
+        q1AnswerPara5: "L’URL dans ce texto n’est pas celle d’un service de transport de colis connu ni même des douanes. Une simple recherche pour vérifier le numéro de téléphone de l’expéditeur ne donne aucun résultat concluant.",
 
         // Question 2
         q2AnswerTitle: "Ceci est une arnaque",
@@ -133,14 +131,12 @@ const translations = {
         seeResultsButton: "See Results", // New translation for "See Results"
 
         // Question 1
-        q1Text: "Payment of import duties, taxes and related fees required for DHL Express 1114459275 from ATLAS COMPANY. Pay securely: https://del.dhl.com/CA/UKx9-exrF7",
         q1AnswerTitle: "This is not a scam",
         q1AnswerPara1: "It’s a real text message sent to a Canadian client from international shipping company DHL.",
         q1AnswerPara2: "To determine whether a message like this is authentic, check the URL. In this case, it’s DHL.com, the official DHL domain. Whenever a URL contains multiple words separated by periods, the word that’s right before “.com” (or another domain ending) is what indicates the real source. Scammers will often try to mislead you by placing words that sound official or credible at the start of a fake URL.",
         q1AnswerPara3: "The sender’s phone number can also help determine whether a text is legit. In this case, the sender is “22345.” A quick online search for this number leads directly to the official DHL website, where the company confirms that it uses this short code for sending text messages.",
         q1AnswerPara4: "Many scammers attempt to pass themselves off as delivery services. Watch out for texts like this.",
-        q1AnswerPara5: "English translation: Dear client, your package is currently being held in customs. Please visit importfeesie.com/r/MT5220FX to resolve this promptly.",
-        q1AnswerPara6: "The URL provided isn’t from a recognized delivery service or customs agency, and a quick search of the sender’s number fails to give any conclusive results.",
+        q1AnswerPara5: "The URL provided isn’t from a recognized delivery service or customs agency, and a quick search of the sender’s number fails to give any conclusive results.",
 
         // Question 2
         q2AnswerTitle: "This is a scam",
@@ -285,7 +281,6 @@ function restartQuiz() {
     currentPage = 0;
     // Remove 'is-visible' class from all answer sections
     document.querySelectorAll('.answer').forEach(ans => {
-        ans.scrollTop = 0; // Reset scroll position
         ans.classList.remove('is-visible');
     });
     // Reset answer button styles
@@ -306,6 +301,11 @@ function restartQuiz() {
     if (scoreDiv) {
         scoreDiv.classList.remove('red', 'yellow', 'green');
     }
+
+    // Hide all next buttons
+    document.querySelectorAll('.next').forEach(btn => {
+        btn.classList.add('hidden');
+    });
 
     showPage('introPage'); // Return to the introduction page
 }
@@ -356,6 +356,30 @@ function setLanguage(lang) {
             element.classList.remove('btn-wide');
         }
     });
+
+// Turn on / off all the img translations
+document.querySelectorAll('.text.english').forEach(element => {
+    const associatedImage = element.previousElementSibling;
+    const shouldBeVisible = currentLanguage === 'en' && associatedImage && !associatedImage.classList.contains('hidden');
+    element.classList.toggle('hidden', !shouldBeVisible);
+});
+
+    document.querySelectorAll('.text.french').forEach(element => {
+        element.classList.toggle('hidden', currentLanguage !== 'fr');
+    });
+
+    // Image resizing for English version
+    if (currentLanguage === 'en') {
+        document.getElementById('img-fr-2a').classList.add('eng');
+        document.getElementById('img-fr-2b').classList.add('eng');
+        document.getElementById('img-fr-4a').classList.add('eng');
+        document.getElementById('img-fr-6a').classList.add('eng');
+    } else {
+        document.getElementById('img-fr-2a').classList.remove('eng');
+        document.getElementById('img-fr-2b').classList.remove('eng');
+        document.getElementById('img-fr-4a').classList.remove('eng');
+        document.getElementById('img-fr-6a').classList.remove('eng');
+    }
 }
 
 // Event listener for answer buttons
@@ -397,6 +421,9 @@ document.querySelectorAll('.btn-group .btn').forEach(button => {
 
         // Show the answer section and "Next Question" button
         answerSection.classList.add('is-visible');
+        requestAnimationFrame(() => {
+            answerSection.scrollTop = 0;
+        });
         if (nextButton) { // Ensure nextButton exists before trying to remove hidden
             nextButton.classList.remove('hidden');
         }
@@ -408,29 +435,39 @@ document.querySelectorAll('.btn-group .btn').forEach(button => {
 // Event listener for alternative buttons on page 2
 document.querySelectorAll('.alt-btn-group .alt-btn').forEach(button => {
     button.addEventListener('click', function () {
-        // Reset timer on interaction
-        clearTimeout(inactivityTimer);
         // Remove 'active' class from all buttons
         document.querySelectorAll('.alt-btn-group .alt-btn').forEach(btn => {
             btn.classList.remove('active');
         });
-
-        // Add 'active' class to the clicked button
         this.classList.add('active');
 
-        // Get the image ID from the clicked button
+        // Get target image ID
         const targetImgId = this.getAttribute('data-img-id');
 
-        // Hide all images inside .q-img
+        // Find the container
         const container = this.closest('.q-img');
+
+        // Hide all images and paragraphs
         container.querySelectorAll('img').forEach(img => {
             img.classList.add('hidden');
         });
+        container.querySelectorAll('p.text').forEach(p => {
+            p.classList.add('hidden');
+        });
 
-        // Show the selected image
+        // Show selected image
         const targetImg = container.querySelector(`#img-${targetImgId}`);
         if (targetImg) {
             targetImg.classList.remove('hidden');
+        }
+
+        // Show corresponding paragraph
+        if (currentLanguage === 'en') {
+            const paragraphs = Array.from(container.querySelectorAll('img')).map(img => img.nextElementSibling);
+            const targetParagraph = container.querySelector(`#img-${targetImgId}`)?.nextElementSibling;
+            if (targetParagraph && targetParagraph.tagName.toLowerCase() === 'p') {
+                targetParagraph.classList.remove('hidden');
+            }
         }
     });
 });

@@ -1,25 +1,23 @@
 /* Import Radio Canada font */
 @import url('https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap');
 
-        body {
-            background: #161616;
-            color: white;
-            font-family: 'Radio Canada', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Ensure body takes full viewport height */
-            margin: 0; /* Remove default body margin */
-            padding: 0; /* Remove default body padding */
-            position: relative; /* Needed for absolutely positioned children */
-
-            /* Moved background styles from .wrapper to body */
-            background-image: url(./img/decrypteurs-arnaques-entete.webp);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: 80% 0;
-            background-attachment: fixed; /* Ensures background stays fixed when content scrolls */
-        }
+body {
+    background: #161616;
+    color: white;
+    font-family: 'Radio Canada', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+    position: relative; /* Needed for absolutely positioned children */
+    background-image: url(./img/decrypteurs-arnaques-entete.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 80% 0;
+    background-attachment: fixed; /* Ensures background stays fixed when content scrolls */
+}
 
 /* General styles for the main container */
 /* Note: quiz-container is used to center the content within the body */
@@ -128,10 +126,9 @@ p {
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Darker shadow for dark theme */
-    margin-bottom: 15px;
 }
 
-.q-img .text {
+.text {
     max-width: 100%;
     font-size: 1rem;
     color: white;
@@ -141,14 +138,15 @@ p {
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #4a4a4a; /* Darker border */
-    margin: 0;
+    margin: 15px 0 5px; /* Margin for spacing */
 }
 
 .btn-group {
     display: flex;
     justify-content: space-between; /* Reverted to space-between as per original CSS */
-    width: 100%;
-    /* Removed flex-wrap and gap to match original user CSS behavior */
+    position: absolute;
+    bottom: 20px;
+    width: 94%;
 }
 
 .btn, .btn-lg {
@@ -169,13 +167,12 @@ p {
     background-color: #555; /* Default button color */
 }
 
-.btn-wide {
-    min-width: 195px; /* Wider buttons for English language */
-}
-
 .btn:hover {
     cursor: pointer;
-    background-color: #777; /* Darker hover effect */
+}
+
+.btn-wide {
+    min-width: 195px; /* Wider buttons for English language */
 }
 
 .btn-lg {
@@ -203,7 +200,7 @@ img {
     padding: 20px;
     background: rgba(22, 22, 22, 0.95); /* Semi-transparent background */
     box-sizing: border-box;
-    width: 30vw; /* Fixed width as per user's CSS */
+    width: 32vw; /* Fixed width as per user's CSS */
     height: 96%; /* Maintain height for layout, content hidden by overflow */
     opacity: 0;
     clip-path: inset(0 0 100% 0); /* Start clipped from bottom (hidden) */
@@ -247,15 +244,18 @@ img {
 }
 
 /* Page 2 specific styles */
-#page1 .btn-group {
-    margin-top: 0px;
-}
-
-/* Page 2 specific styles */
 #page2 .q-img {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#img-fr-2a.eng {
+    height: 385px;
+}
+
+#img-fr-2b.eng {
+    height: 196px;
 }
 
 .alt-btn-group {
@@ -274,23 +274,9 @@ img {
     border-color: #007bff;
 }
 
-#page2 .btn-group {
-    margin-top: 80px;
-}
-
-/* Page 3 specific styles */
-#page3 .btn-group {
-    margin-top: 100px;
-}
-
 /* Page 4 specific styles */
-#page4 .btn-group {
-    margin-top: 10px;
-}
-
-/* Page 5 specific styles */
-#page5 .btn-group {
-    margin-top: 280px;
+#img-fr-4a.eng {
+    height: 325px;
 }
 
 /* Page 6 specific styles */
@@ -298,17 +284,12 @@ img {
     max-height: 700px;
 }
 
-#page6 .btn-group {
-    margin-top: 15px;
+#img-fr-6a.eng {
+    height: 520px;
 }
 
 #page6 .answer img {
     max-height: 150px;
-}
-
-/* Page 7 specific styles */
-#page7 .btn-group {
-    margin-top: 225px;
 }
 
 /* Score section styles */
@@ -355,7 +336,7 @@ img {
     margin: 0;
 }
 
-/* Color classes */
+/* Color */
 .red {
     background: rgb(190, 0, 0);
 }
@@ -367,7 +348,6 @@ img {
 .yellow {
     background: rgb(253, 196, 60);
     color: #161616;
-    /* Note: color for text/icon on yellow is handled by .score.yellow .score-text and .score.yellow .icon svg */
 }
 
 /* Fixed controls container for language and restart buttons */
@@ -424,5 +404,3 @@ img {
     pointer-events: auto; /* Re-enable pointer events for button */
     /* Inherits btn-lg styles for size and font */
 }
-
-/* End of CSS */
