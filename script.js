@@ -2,7 +2,7 @@
 let currentPage = 0; // Current page index (0 for intro, 1 for page1, etc.)
 const totalQuestions = 7;
 let correctAnswers = 0;
-let currentLanguage = 'en'; // Default language is French
+let currentLanguage = 'fr'; // Default language is French
 let inactivityTimer; // Variable to hold the timer
 
 // Define correct answers (page index: 'data-answer' of the correct button)
