@@ -1,5 +1,24 @@
-/* Import Radio Canada font */
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap');
+/* Variable font - normal */
+@font-face {
+  font-family: 'Radio Canada';
+  src: url('./fonts/RadioCanada-VariableFont_wdth,wght.ttf') format('truetype-variations'),
+       url('./fonts/RadioCanada-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 300 700; /* range from Google Fonts */
+  font-stretch: 75% 100%; /* width range, adjust if needed */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Variable font - italic */
+@font-face {
+  font-family: 'Radio Canada';
+  src: url('./fonts/RadioCanada-Italic-VariableFont_wdth,wght.ttf') format('truetype-variations'),
+       url('./fonts/RadioCanada-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-stretch: 75% 100%;
+  font-style: italic;
+  font-display: swap;
+}
 
 body {
     background: #161616;
@@ -151,9 +170,9 @@ p {
 
 .btn, .btn-lg {
     font-family: 'Radio Canada', sans-serif;
-    font-size: 18px; /* Default for .btn */
+    font-size: 16px; /* Default for .btn */
     height: 50px;
-    padding: 10px 20px; /* Default for .btn */
+    padding: 10px 16px; /* Default for .btn */
     border-radius: 15px;
     border: none;
     transition: all 0.3s ease;
@@ -172,7 +191,7 @@ p {
 }
 
 .btn-wide {
-    min-width: 195px; /* Wider buttons for English language */
+    min-width: 187px; /* Wider buttons for English language */
 }
 
 .btn-lg {
@@ -240,7 +259,7 @@ img {
 .next {
     position: absolute;
     bottom: 20px;
-    margin-left: 50px;
+    margin-left: 5px;
 }
 
 /* Page 2 specific styles */
